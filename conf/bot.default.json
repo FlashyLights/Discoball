@@ -1,0 +1,20 @@
+{
+    "token": "<Discord Bot Token> - https://github.com/Just-Some-Bots/MusicBot/wiki/FAQ",
+    "mysql": {
+        "host": "127.0.0.1",
+        "database": "discoball",
+        "user": "discoball",
+        "password": "discoball"
+    },
+    "ignoreModules": [
+        "classes/"
+    ],
+    "logchannel": "bot-log",
+    "defaultguildid": "397781365728215051",
+    "adminchannels": ["admin-chat", "bot-log"],
+    "moduleConfigs": {
+        "api": {
+            "port": 3000
+        }
+    }
+}

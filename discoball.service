@@ -1,0 +1,8 @@
+[Unit]
+Description=DiscoBall
+
+[Service]
+ExecStart=/bin/bash /opt/sentinel/run.sh >> /var/log/sentinel.log 2>&1
+
+[Install]
+WantedBy=multi-user.target
