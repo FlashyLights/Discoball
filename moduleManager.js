@@ -81,7 +81,10 @@ class moduleManager {
 				}
 
 				loadedEntryPoints[friendly] = new loadedClass(self.bot);
-				loadedEntryPoints[friendly].init();
+				if (_.isFunction(loadedEntryPoints[friendly].preInit)) {
+					loadedEntryPoints[friendly].preInit();
+					console.log("Called pre-init on " + friendly);
+				}
 			});
 
 			module.classes = loadedEntryPoints;
@@ -96,6 +99,15 @@ class moduleManager {
 			self.loadedModules[module.base] = module;
 		});
 
+		_.each(self.loadedModules, function(module) { 
+			_.each(module.classes, function(loadedClass, friendly) {
+				if (_.isFunction(loadedClass.init)) {
+					loadedClass.init();
+					console.log("Called init on " + friendly);
+				}
+			});
+		});
+
 		var moduleList = _.map(self.loadedModules, function(o) {
 			return o.name + " by " + o.author.name;
 		});
@@ -107,9 +119,10 @@ class moduleManager {
 		});
 
 		_.each(self.loadedModules, function(module) {
-			_.each(module.classes, function(loadedClass) {
+			_.each(module.classes, function(loadedClass, friendly) {
 				if (_.isFunction(loadedClass.postInit)) {
 					loadedClass.postInit();
+					console.log("Called post-init on " + friendly);
 				}
 			});
 		});

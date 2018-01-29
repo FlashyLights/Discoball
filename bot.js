@@ -122,7 +122,8 @@ class Bot {
 		var self = this;
 		var channel = server.channels.find("name", self.config.logchannel);
 		if (!channel) {
-			console.log("Could not find log channel "+self.config.logchannel+" on "+server.name+".", message);
+			console.log("Could not find log channel "+self.config.logchannel+" on "+server.name+".");
+			console.log(message)
 			return new Promise(function(resolve) {
 				resolve();
 			});
