@@ -15,8 +15,8 @@ By itself the bot will run but won't have any functionality. Read on to add some
 Discoball is designed around modules, meaning each can be customised. To start with, we're going to download the default and API modules.
 
 1. `cd modules/`
-2. Download the default module, with `git checkout github.com/FlashyLights/Discoball-default default`
-3. Download the api module, with `git checkout github.com/FlashyLights/Discoball-API api`
+2. Download the default module, with `git clone https://github.com/FlashyLights/Discoball-default default`
+3. Download the api module, with `git clone https://github.com/FlashyLights/Discoball-API api`
 
 The modules will now load when the bot is next restarted, but you'll likely need to add some new config items to make the most of them. Most modules will tell you in their README which lines need adding.
 
