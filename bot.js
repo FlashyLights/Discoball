@@ -5,8 +5,6 @@ var moduleManager = require("./moduleManager.js");
 var DirLoad = require("dir-load");
 var path = require("path");
 
-var modules = new DirLoad(__dirname + "/modules");
-
 class Bot {
 	constructor(dclient, mysql, config) {
 		var self = this;
