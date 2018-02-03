@@ -15,7 +15,7 @@ class commandController {
 		self.addCommand({
 			trigger: "!commands",
 			function: self.listCommandsCommand,
-			permCheck: self.perms.isInAdminRoom
+			permCheck: self.perms.isInAdminRoom,
 		});
 	}
 
@@ -31,6 +31,10 @@ class commandController {
 				return;
 			}
 			command.bot = self.bot;
+			command._function = command.function;
+			if (command.thisarg) {
+				command._function = command.function.bind(command.thisarg);
+			}
 			self.commandList.set(trigger, command);
 			console.log("Registered the " + trigger + " command");
 		});
@@ -43,7 +47,7 @@ class commandController {
 		if (self.commandList.has(command)) {
 			var commandObject = self.commandList.get(command);
 			if (commandObject.permCheck(msg)) {
-				commandObject.function(msg);
+				commandObject._function(msg);
 			}
 		}
 	}
