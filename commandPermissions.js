@@ -24,11 +24,12 @@ class commandPermissions {
 	}
 
 	isInRoom(msg, rooms, failedCallback) {
-		rooms.forEach(function(room) {
+		for (var x in rooms) {
+			var room = rooms[x];
 			if (msg.channel.name == room) {
 				return true;
 			}
-		});
+		};
 
 		if (failedCallback) {
 			failedCallback(msg);
