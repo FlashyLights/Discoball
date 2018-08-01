@@ -1,0 +1,7 @@
+[Unit]
+Description=DiscoBall instance %i
+After=multi-user.target
+
+[Service]
+PIDFile=/opt/%i/pid.pid
+ExecStart=/opt/%i/run.sh
