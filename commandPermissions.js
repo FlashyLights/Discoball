@@ -56,6 +56,35 @@ class commandPermissions {
 	pass() {
 		return true;
 	}
+
+	hasAllRoles(member, roles, failedCallback) {
+		for (var x in roles) {
+			var role = roles[x];
+			if (!member.roles.some(m => m.id === role)) {
+				if (failedCallback) {
+					failedCallback(member);
+				}
+				return false;
+			}
+		};
+
+		return true;
+	}
+
+	hasAnyRole(member, roles, failedCallback) {
+		for (var x in roles) {
+			var role = roles[x];
+			if (!member.roles.some(m => m.id === role)) {
+				return true;
+			}
+		};
+
+		if (failedCallback) {
+			failedCallback(member);
+		}
+		return false;
+	}
+
 }
 module.exports = commandPermissions;
 
