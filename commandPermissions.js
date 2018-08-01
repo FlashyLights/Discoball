@@ -60,7 +60,7 @@ class commandPermissions {
 	hasAllRoles(member, roles, failedCallback) {
 		for (var x in roles) {
 			var role = roles[x];
-			if (!member.roles.some(m => m.id === role)) {
+			if (!member.roles.some(m => m.name === role)) {
 				if (failedCallback) {
 					failedCallback(member);
 				}
@@ -74,7 +74,7 @@ class commandPermissions {
 	hasAnyRole(member, roles, failedCallback) {
 		for (var x in roles) {
 			var role = roles[x];
-			if (!member.roles.some(m => m.id === role)) {
+			if (member.roles.some(m => m.name === role)) {
 				return true;
 			}
 		};
